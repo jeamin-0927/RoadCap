@@ -1,0 +1,33 @@
+.background{
+  background: url(./background.svg);
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.title{
+  font-size: 8em;
+  text-align: center;
+  font-weight: 700;
+}
+.start {
+  font-size: 3.5em;
+  text-align: center;
+  font-weight: 700;
+  border: none;
+  background: rgba(39, 37, 50, .5);
+  padding: 0.3em 1.2em;
+  border-radius: 0.6em;
+  cursor: pointer;
+  border: 2px solid rgba(39, 37, 50);
+  transition: border 0.2s ease-in-out;
+}
+
+.start:hover {
+  border-color: #646cff;
+}
