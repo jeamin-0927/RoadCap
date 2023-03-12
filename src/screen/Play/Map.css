@@ -1,0 +1,41 @@
+.map, .map-div, .map-submit{
+  transition: all 0.2s ease;
+}
+
+.map{
+  position: fixed;
+  bottom: 30px; right: 30px;
+  opacity: 0.6;
+}
+.map-div{
+  width: 300px;
+  height: 200px;
+  background-color: #fff;
+  border-radius: 10px;
+  margin: 0 0 15px 0;
+}
+.map-submit{
+  background-color: #353535;
+  outline: none;
+  border: 0;
+  width: 300px;
+  height: 55px;
+  font-size: 22px;
+  font-weight: 700;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.map:hover{
+  opacity: 1;
+}
+
+.map:hover .map-div{
+  width: 450px;
+  height: 300px;
+}
+
+.map:hover .map-submit{
+  width: 450px;
+  height: 55px;
+}

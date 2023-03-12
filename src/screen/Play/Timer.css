@@ -1,0 +1,46 @@
+.timer-outer{
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  position: fixed;
+  top: 0; left: 0;
+}
+.timer-bg{
+  width: 240px;
+  height: 65px;
+  border-radius: 65px;
+}
+.timer-bg-0{
+  background: linear-gradient(45deg, #0094FF 0%, #6CB929 100%);
+  background-size: 400% 400%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: background-gradient 5s infinite;
+}
+
+@keyframes background-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.timer-inner{
+  width: 230px;
+  height: 55px;
+  border-radius: 55px;
+  background: #353535;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  font-weight: 1000;
+}
