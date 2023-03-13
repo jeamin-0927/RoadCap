@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import { MapContainer, TileLayer, useMap, Marker, Popup, useMapEvents } from 'react-leaflet'
 import { useRecoilState } from 'recoil';
 import L from "leaflet";
-import { pinPositionRecoil, goalPositionRecoil } from './recoilStates';
+import { pinPositionRecoil, goalPositionRecoil } from '../../recoil/play';
 
 import './Map.css';
 
@@ -11,7 +11,7 @@ import './Map.css';
 const Mapmap = () => {
   const position = [35.3595704, 127.105399];
   const [pinPosition, setPinPosition] = useRecoilState(pinPositionRecoil);
-  // const [goalPosition, setGoalPosition] = useRecoilState(goalPositionRecoil);
+  const [goalPosition, setGoalPosition] = useRecoilState(goalPositionRecoil);
 
   const LocationMarker = () => {
     useMapEvents({
@@ -40,7 +40,7 @@ const Mapmap = () => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <LocationMarker />
-      {/* <Marker position={goalPosition}></Marker> */}
+      <Marker position={goalPosition}></Marker>
     </MapContainer>
   )
 }

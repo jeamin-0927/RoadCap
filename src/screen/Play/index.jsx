@@ -8,7 +8,7 @@ import Roadview from './Roadview';
 import Map from './Map';
 
 import { useRecoilState } from 'recoil';
-import { goalPositionRecoil, nowTimerRecoil } from './recoilStates';
+import { goalPositionRecoil, nowTimerRecoil } from '../../recoil/play';
 
 const Play = () => {
   const [nowTimer, setNowTimer] = useRecoilState(nowTimerRecoil);
