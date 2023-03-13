@@ -7,8 +7,11 @@ import Timer from './Timer';
 import Roadview from './Roadview';
 import Map from './Map';
 
+import { useRecoilState } from 'recoil';
+import { goalPositionRecoil, nowTimerRecoil } from './recoilStates';
+
 const Play = () => {
-  const [nowTimer, setNowTimer] = useState('01:59');
+  const [nowTimer, setNowTimer] = useRecoilState(nowTimerRecoil);
   let endTime = null;
 
   useEffect(() => {
@@ -28,6 +31,17 @@ const Play = () => {
     }, 1000);
 
     return () => clearInterval(timer);
+  }, []);
+
+  const [goalPosition, setGoalPosition] = useRecoilState(goalPositionRecoil);
+  useEffect(() => {
+    const getRandomFloat = (min, max) => {
+      return Math.random() * (max - min) + min;
+    }
+    setGoalPosition({
+      lat: getRandomFloat(33.0649, 38.6132),
+      lng: getRandomFloat(124.5841, 131.6349)
+    })
   }, []);
 
 

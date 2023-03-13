@@ -13,6 +13,8 @@
   background-color: #fff;
   border-radius: 10px;
   margin: 0 0 15px 0;
+  overflow: hidden;
+  user-select: none;
 }
 .map-submit{
   background-color: #353535;
@@ -23,6 +25,10 @@
   font-size: 22px;
   font-weight: 700;
   border-radius: 10px;
+  cursor: no-drop;
+}
+.map-submit-after{
+  background-color: #6CB929;
   cursor: pointer;
 }
 
