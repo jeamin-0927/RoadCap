@@ -2,9 +2,11 @@ import { useEffect, useState, useRef } from 'react';
 import { MapContainer, TileLayer, useMap, Marker, Popup, useMapEvents } from 'react-leaflet'
 import { useRecoilState } from 'recoil';
 import L from "leaflet";
-import { pinPositionRecoil, goalPositionRecoil } from '../../recoil/play';
+import { pinPositionRecoil, goalPositionRecoil, scoreRecoil, mapDataRecoil } from '../../recoil/play';
+import { Fireworks } from '@fireworks-js/react'
 
 import './Map.css';
+import { useNavigate } from 'react-router-dom';
 
 //random float
 
@@ -12,10 +14,13 @@ const Mapmap = () => {
   const position = [35.3595704, 127.105399];
   const [pinPosition, setPinPosition] = useRecoilState(pinPositionRecoil);
   const [goalPosition, setGoalPosition] = useRecoilState(goalPositionRecoil);
+  const [mapData, setMapData] = useRecoilState(mapDataRecoil);
 
   const LocationMarker = () => {
     useMapEvents({
       click(e) {
+        setMapData([...mapData, e.latlng]);
+        console.log(mapData);
         setPinPosition(e.latlng);
       },
     });
@@ -64,11 +69,18 @@ const distance = (lat1, lon1, lat2, lon2) => {
 const Map = () => {
   const [pinPosition, setPinPosition] = useRecoilState(pinPositionRecoil);
   const [goalPosition, setGoalPosition] = useRecoilState(goalPositionRecoil);
+  const [score, setScore] = useRecoilState(scoreRecoil);
+  const navigate = useNavigate();
+
   const submit = () => {
     if (!pinPosition.lat || !pinPosition.lng) return;
     console.log(pinPosition, goalPosition);
     const dist = distance(pinPosition.lat, pinPosition.lng, goalPosition.lat, goalPosition.lng);
     console.log(dist);
+
+    setScore(score ? score + Math.floor(100000000 / dist) : Math.floor(100000000 / dist));
+    navigate('/score');
+
     return 0;
   }
 

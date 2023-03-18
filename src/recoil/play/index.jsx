@@ -20,3 +20,18 @@ export const nowTimerRecoil = atom({
   key: 'nowTimerRecoil',
   default: '01:59'
 });
+
+export const roundRecoil = atom({
+  key: 'roundRecoil',
+  default: 1
+});
+
+export const scoreRecoil = atom({
+  key: 'scoreRecoil',
+  default: null
+});
+
+export const mapDataRecoil = atom({
+  key: 'mapDataRecoil',
+  default: []
+});

@@ -2,7 +2,6 @@ import './Roadview.css';
 import { Roadview } from 'react-kakao-maps-sdk';
 import { goalPositionRecoil } from '../../recoil/play';
 import { useRecoilState } from 'recoil';
-import { useEffect, useRef } from 'react';
 
 const Rdv = () => {
   const [goalPosition, setGoalPosition] = useRecoilState(goalPositionRecoil);

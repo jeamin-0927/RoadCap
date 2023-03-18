@@ -5,6 +5,7 @@ import './App.css'
 
 import Main from './screen/Main';
 import Play from './screen/Play';
+import Score from './screen/Score';
 
 const Errors = () => {
   const navigate = useNavigate();
@@ -24,6 +25,7 @@ const App = () => {
       <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/play" element={<Play />} />
+          <Route path="/score" element={<Score />} />
           <Route path="*" element={<Errors />} />
       </Routes>
     </Router>
