@@ -1,20 +1,18 @@
-import { useEffect, useState, useRef } from 'react';
 import { MapContainer, TileLayer, useMap, Marker, Popup, useMapEvents } from 'react-leaflet'
 import { useRecoilState } from 'recoil';
-import L from "leaflet";
 import { pinPositionRecoil, goalPositionRecoil, scoreRecoil, mapDataRecoil } from '../../recoil/play';
-import { Fireworks } from '@fireworks-js/react'
 
 import './Map.css';
 import { useNavigate } from 'react-router-dom';
-
-//random float
+import { useRef } from 'react';
 
 const Mapmap = () => {
-  const position = [35.3595704, 127.105399];
-  const [pinPosition, setPinPosition] = useRecoilState(pinPositionRecoil);
-  const [goalPosition, setGoalPosition] = useRecoilState(goalPositionRecoil);
-  const [mapData, setMapData] = useRecoilState(mapDataRecoil);
+  const position = [ 35.3595704, 127.105399 ];
+  const [ pinPosition, setPinPosition ] = useRecoilState(pinPositionRecoil);
+  const [ goalPosition, setGoalPosition ] = useRecoilState(goalPositionRecoil);
+  const [ mapData, setMapData ] = useRecoilState(mapDataRecoil);
+
+  const mapRef = useRef(null);
 
   const LocationMarker = () => {
     useMapEvents({
@@ -30,6 +28,8 @@ const Mapmap = () => {
     );
   }
 
+  console.log(mapRef);
+
   return (
     <MapContainer 
       center={position} 
@@ -39,6 +39,7 @@ const Mapmap = () => {
         width: '100%',
         height: '100%'
       }}
+      ref={mapRef}
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -74,11 +75,12 @@ const Map = () => {
 
   const submit = () => {
     if (!pinPosition.lat || !pinPosition.lng) return;
-    console.log(pinPosition, goalPosition);
+    // console.log(pinPosition, goalPosition);
     const dist = distance(pinPosition.lat, pinPosition.lng, goalPosition.lat, goalPosition.lng);
-    console.log(dist);
 
-    setScore(score ? score + Math.floor(100000000 / dist) : Math.floor(100000000 / dist));
+    const newScore = Math.floor(500000 / (dist + 1));
+
+    setScore(score ? score + newScore : newScore);
     navigate('/score');
 
     return 0;

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
-import { goalPositionRecoil, nowTimerRecoil } from '../../recoil/play';
+import { pinPositionRecoil, goalPositionRecoil, nowTimerRecoil, roundRecoil, scoreRecoil } from '../../recoil/play';
 
 import korea from '../../utils/game/korea.json';
 
@@ -46,8 +46,16 @@ const isPointInPolyons = (point, polygons) => {
 }
 
 export const initGame = () => {
+  const [pinPosition, setPinPosition] = useRecoilState(pinPositionRecoil);
   const [goalPosition, setGoalPosition] = useRecoilState(goalPositionRecoil);
   const [nowTimer, setNowTimer] = useRecoilState(nowTimerRecoil);
+  
+  useEffect(() => {
+    setPinPosition({
+      lat: null,
+      lng: null
+    });  
+  }, []);
   //console.log("initGame", goalPosition);
 
   let endTime = null;

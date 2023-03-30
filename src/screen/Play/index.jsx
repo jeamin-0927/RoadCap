@@ -16,7 +16,6 @@ const Play = () => {
   const [goalPosition, setGoalPosition] = useRecoilState(goalPositionRecoil);
   initGame();
 
-  
   return (
     <div>
       <Roadview goalPosition={goalPosition} />
